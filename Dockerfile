@@ -1,10 +1,5 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2
 
-# image inspired from
-# https://github.com/CL0SeY/dotnet-mono-docker/blob/master/1.1/sdk/Dockerfile
-# and
-# https://github.com/gmantaos/monogame-docker
-
 ARG MONO_VERSION=5.18.1.0
 ENV MONO_VERSION $MONO_VERSION
 
@@ -19,7 +14,6 @@ RUN apt update \
 ARG MONOGAME_VERSION=3.7.1
 ENV MONOGAME_VERSION $MONOGAME_VERSION
 
-# Download monogame from the official repo
 RUN apt-get update \
     && apt-get install -y --no-install-recommends wget gtk-sharp3 \
     && wget -O monogame-sdk.run https://github.com/MonoGame/MonoGame/releases/download/v$MONOGAME_VERSION/monogame-sdk.run \

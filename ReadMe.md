@@ -10,7 +10,7 @@
 [![Version](https://images.microbadger.com/badges/version/gableroux/dotnet-mono-monogame.svg)](https://microbadger.com/images/gableroux/dotnet-mono-monogame)
 [![Layers](https://images.microbadger.com/badges/image/gableroux/dotnet-mono-monogame.svg)](https://microbadger.com/images/gableroux/dotnet-mono-monogame)
 
-This is a docker image used to build games created with [monogame](http://www.monogame.net/) using `dotnet` command line.
+This is a docker image used to build games created with [monogame](http://www.monogame.net/) using `dotnet` command line. It was inspired by [gmantaos/monogame-docker](https://github.com/gmantaos/monogame-docker) and [CL0SeY/dotnet-mono-docker](https://github.com/CL0SeY/dotnet-mono-docker).
 
 ## Examples
 
