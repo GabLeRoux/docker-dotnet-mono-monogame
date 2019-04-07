@@ -47,7 +47,7 @@ version: 2
     - run: dotnet build PROJECT_NAME.csproj --configuration $BUILDCONFIGURATION
     - run: dotnet publish -r $BUILDPLATFORM --configuration $BUILDCONFIGURATION /p:TrimUnusedDependencies=true
     - store_artifacts:
-        path: ~/repo/
+        path: ~/repo/bin/release/netcoreapp2.2/$BUILDPLATFORM/publish
 
 jobs:
   windows:
@@ -65,11 +65,6 @@ jobs:
     environment:
       BUILDCONFIGURATION: 'release'
       BUILDPLATFORM: 'osx-x64'
-#  deploy:
-#    docker:
-#      - image: dosowisko/butler
-#    steps:
-#      - run: butler --help
 
 workflows:
   version: 2
