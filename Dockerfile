@@ -16,7 +16,7 @@ RUN apt update \
 	&& apt-get install -y mono-devel fsharp mono-vbnc nuget referenceassemblies-pcl \
 	&& rm -rf /var/lib/apt/lists/*
 
-ARG MONOGAME_VERSION=3.7.0.4
+ARG MONOGAME_VERSION=3.7.1
 ENV MONOGAME_VERSION $MONOGAME_VERSION
 
 # Download monogame from the official repo
