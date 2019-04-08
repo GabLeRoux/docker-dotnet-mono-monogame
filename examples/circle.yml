@@ -12,7 +12,7 @@ version: 2
     - run: chmod +x /root/.nuget/packages/monogame.content.builder/$MONOGAME_CONTENT_VERSION/build/MGCB/build/ffprobe
     - run: chmod +x /root/.nuget/packages/monogame.content.builder/$MONOGAME_CONTENT_VERSION/build/MGCB/build/ffmpeg
     # actual build
-    - run: dotnet build KlSS.csproj --configuration $BUILDCONFIGURATION
+    - run: dotnet build $PROJECT_NAME.csproj --configuration $BUILDCONFIGURATION
     - run: dotnet publish -r $BUILDPLATFORM --configuration $BUILDCONFIGURATION /p:TrimUnusedDependencies=true
     - run: apt-get update && apt-get install -y zip
     - run: mkdir ~/repo/artifacts/
