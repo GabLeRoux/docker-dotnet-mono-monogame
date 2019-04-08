@@ -2,17 +2,27 @@ version: 2
 
 .job_configuration: &job_configuration
   docker:
-    - image: gableroux/dotnet-mono-monogame
+    - image: gableroux/dotnet-mono-monogame:latest
   working_directory: ~/repo
   steps:
     - checkout
     - run: dotnet restore
-    - run: chmod +x /root/.nuget/packages/monogame.content.builder/3.7.0.4/build/MGCB/build/ffprobe
-    - run: chmod +x /root/.nuget/packages/monogame.content.builder/3.7.0.4/build/MGCB/build/ffmpeg
-    - run: dotnet build PROJECT_NAME.csproj --configuration $BUILDCONFIGURATION
+    # workaround to ensure monogame.content.builder package
+    - run: dotnet build $PROJECT_NAME.csproj --configuration $BUILDCONFIGURATION || true
+    - run: chmod +x /root/.nuget/packages/monogame.content.builder/$MONOGAME_CONTENT_VERSION/build/MGCB/build/ffprobe
+    - run: chmod +x /root/.nuget/packages/monogame.content.builder/$MONOGAME_CONTENT_VERSION/build/MGCB/build/ffmpeg
+    # actual build
+    - run: dotnet build KlSS.csproj --configuration $BUILDCONFIGURATION
     - run: dotnet publish -r $BUILDPLATFORM --configuration $BUILDCONFIGURATION /p:TrimUnusedDependencies=true
+    - run: apt-get update && apt-get install -y zip
+    - run: mkdir ~/repo/artifacts/
+    - run: cd ~/repo/bin/release/netcoreapp2.2/$BUILDPLATFORM/publish && zip -r ~/repo/artifacts/$PROJECT_NAME-$BUILDPLATFORM.zip ./
     - store_artifacts:
-        path: ~/repo/bin/release/netcoreapp2.2/$BUILDPLATFORM/publish
+        path: ~/repo/artifacts/
+
+environment:
+  PROJECT_NAME: example_project_name
+  MONOGAME_CONTENT_VERSION: 3.7.0.4
 
 jobs:
   windows:
@@ -38,3 +48,4 @@ workflows:
       - windows
       - linux
       - macos
+
