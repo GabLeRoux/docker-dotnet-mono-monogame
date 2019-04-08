@@ -28,7 +28,7 @@ dotnet build project_name.csproj
 
 ### CircleCI
 
-See [./examples/circle.yml](examples/circle.yml) (to be tested)
+See [./examples/circle.yml](examples/circle.yml) and [./examples/build.sh](examples/build.sh)
 
 ## Troubleshooting
 

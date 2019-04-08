@@ -14,9 +14,6 @@ export PUBLISH_DIR=/root/repo/bin/release/netcoreapp2.2/${BUILD_PLATFORM}/publis
 export MGCB_VERSION=3.7.0.4
 export MGCB_PACKAGE_PATH=/root/.nuget/packages/monogame.content.builder/${MGCB_VERSION}/build/MGCB/build
 
-# adding zip cli for artifact zipping, todo: add this to base image
-apt-get update && apt-get install -y zip
-
 dotnet restore
 
 # workaround to ensure monogame.content.builder package binaries are executable
