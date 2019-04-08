@@ -16,6 +16,7 @@ ENV MONOGAME_VERSION $MONOGAME_VERSION
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends wget gtk-sharp3 \
+    zip \
     && wget -O monogame-sdk.run https://github.com/MonoGame/MonoGame/releases/download/v$MONOGAME_VERSION/monogame-sdk.run \
     && chmod +x monogame-sdk.run \
     && yes | ./monogame-sdk.run \
